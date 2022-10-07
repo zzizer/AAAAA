@@ -1,0 +1,44 @@
+{% extends "partials/navbar.html" %}
+{% block content %}
+{% load crispy_forms_tags %} 
+
+<div class="container py-5">
+
+    <div class="row py-5">
+        <h6 class="text-center">Details of All Customers Available</h6>
+        <hr>
+        <table class=" table table-striped text-center">
+            <tr>
+                <th class="bg-light shadow-sm">Name</th>
+                <th class="bg-light shadow-sm">Product Taken</th>
+                <th class="bg-light shadow-sm">Amount</th>
+                <th class="bg-light shadow-sm">Initiated by</th>
+                <th class="bg-light shadow-sm">Status</th>
+            </tr>
+            {% for debt in debts %}
+            <tr>
+                <td><a href="{% url 'single-customerDebt' debt.id %}" class="">{{debt.customer}}</a></td>
+                <td>{{debt.product}}</td>
+                <td>shs. {{debt.total}}</td>
+                <td>{{debt.initiatedby}}</td>
+
+                {% if debt.paid %}
+                <td><i class="bi bi-check-all"></i></td>
+                {% else %}
+                <td><i class="bi bi-x-square"></i></td>
+                {% endif %}
+                <!--<td>{{debt.paid}}</td>-->
+                <td><a href="{% url 'single-customerDebt' debt.id %}" class="btn btn-info">In details</a></td> 
+                <td><a href="{% url 'update-debt' debt.id %}" class="btn btn-info">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+
+
+{% include "partials/footer.html" %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "partials/navbar.html" %}
+{% block content %}
+
+<div class="container py-5">
+    <div class="row py-5">
+        <h3>Income</h3>
+        <hr>
+        <div class="col-md-10">
+            <strong>Name: </strong>{{customer.name}}
+            <br>
+            <strong>Account Balance: </strong>{{customer.accountBalance}}
+            <br>
+            <strong>Telephone No. </strong>{{customer.telnumber}}
+            <br>
+            <strong>Email: </strong>{{customer.email}}
+            <br>
+            <strong>Address: </strong>{{customer.address}}
+        </div>
+        <div class="col-md-2">
+            <a href="{% url 'view-customer' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</div>
+{% include "partials/footer.html" %}
+{% endblock %}

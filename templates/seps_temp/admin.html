@@ -1,0 +1,105 @@
+{% extends "partials/navbar.html" %}
+{% block content %}
+<div class="container py-5">
+    <div class="row py-5">
+        <div class="col-lg-4">
+            <h5>Information</h5>
+            <p class="text-muted shadow-sm bg-light">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore, esse.
+            </p>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="row">
+                <h5>Statistics</h5>
+                <hr>
+                <div class="col-3 bg-light shadow-sm">
+                    <h6>Expenditure</h6>
+                    <h3 class="text-muted">shs. 120,322</h3>
+                </div>
+                <div class="col-3 bg-light shadow-sm ms-5">
+                    <h6>Income</h6>
+                    <h3 class="text-muted">shs. 120,322</h3>
+                </div>
+                <div class="col-3 bg-light shadow-sm ms-5">
+                    <h6>Profits</h6>
+                    <h3 class="text-muted">shs. 20,322</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--serach engine starts-->
+    <div class="container">
+        <div class="row bg-light shadow-sm">
+            <div class="col-lg-5">
+                <h4 class="ms-4">Search Product</h4>
+            </div>
+            <div class="col-lg-5">
+                <form action="" class="">
+                    <input class="border border-success" type="search" name="searching" placeholder="Search..." id="">
+                    <button class="btn btn-outline-primary rounded-pill" type="submit">search</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    <!--serach engine_ends-->
+    <div class="containe py-2">
+        <div class="row">
+            <div class="col-lg-8">
+                <h6 class="text-center">Products Available</h6>
+                <table class=" table table-striped text-center">
+                    <tr>
+                        <th class="bg-light shadow-sm">Product Name</th>
+                        <th class="bg-light shadow-sm">Unit Price</th>
+                        <th class="bg-light shadow-sm">Category</th>
+                        <th class="bg-light shadow-sm">Initially Stocked</th>
+                        <th class="bg-light shadow-sm">Status</th>
+                    </tr>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{product.name}}</td>
+                        <td>shs. {{product.unitPrice}}</td>
+                        <td>{{product.category}}</td>
+                        <td>{{product.stocked}} {{product.measuredin}}</td>
+                        <td>{{product.status}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="col-lg-4 text-center">
+                <h6>Admin Special commands</h6>
+                <div class="row py-3">
+                    <div class="col-lg-6">
+                        <a href="{% url 'add_Customer' %}" class="btn btn-success">Add Customer</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="{% url 'add_product' %}" class="btn btn-primary">Add Product</a>
+                    </div>
+                </div>
+                <div class="row py-5">
+                    <div class="col-lg-6">
+                        <a href="{% url 'make_sale' %}" class="btn btn-secondary">Make Sale</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="{% url 'make_debt' %}" class="btn btn-warning">Debt</a>
+                    </div>
+                </div>
+                <div class="row py-5">
+                    <div class="col-lg-6">
+                        <a href="#" class="btn btn-primary">New Invoice/ Spend</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="#" class="btn btn-danger">Delete / Edit Product</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+<!--in summary_ends-->
+{% include "partials/footer.html" %}
+
+{% endblock %}

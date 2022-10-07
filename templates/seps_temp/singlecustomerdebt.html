@@ -1,0 +1,31 @@
+{% extends "partials/navbar.html" %}
+{% block content %}
+
+<div class="container py-5">
+    <div class="row py-5">
+        <h3>Issued On: {{debt.date}}</h3>
+        <hr>
+        <div class="col-md-10">
+            <strong>Name: </strong> {{debt.customer}}
+            <br>
+            <strong>Product Taken: </strong>{{debt.product}}
+            <br>
+            <strong>Quantity Taken: </strong>{{debt.quantity}}
+            <br>
+            <strong>Category: </strong>{{debt.category}}
+            <br>
+            <strong>Initiated by: </strong>{{debt.initiatedby}}
+            <br>
+            <strong>Cleared: </strong> {{debt.paid}}
+        </div>
+        <div class="col-md-2">
+            <a href="{% url 'view-debts' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% include "partials/footer.html" %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "partials/navbar.html" %}
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row py-5">
+        <h6 class="text-center">Details of All Customers Available</h6>
+        <hr>
+        <table class=" table table-striped text-center">
+            <tr>
+                <th class="bg-light shadow-sm"><i class="bi bi-person"></i> Name</th>
+                <th class="bg-light shadow-sm">Account Balance</th>
+                <th class="bg-light shadow-sm">Contact <i class="bi bi-telephone-forward"></i></th>
+            </tr>
+            {% for customer in customers %}
+            <tr>
+                <td><a href="{% url 'customer-Details' customer.id %}" class="">{{customer.name}}</a></td>
+                <td>{{customer.accountBalance}}</td>
+                <td>{{customer.telnumber}}</td>
+                <td><a href="{% url 'customer-Details' customer.id %}" class="btn btn-info">In details</a></td>
+                <td><a href="{% url 'update-customer' customer.id %}" class="btn btn-info">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+
+{% include "partials/footer.html" %}
+
+{% endblock %}

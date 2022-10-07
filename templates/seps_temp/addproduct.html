@@ -1,0 +1,50 @@
+{% extends "partials/navbar.html" %}
+{% block content %}
+{% load crispy_forms_tags %} 
+<style>
+    .middle{
+        width: 600px;
+        padding-left: 50px;
+        position: relative;
+        padding-top: 50px;
+    }
+</style>
+<div class="container py-5">
+    <div class="row">
+        <div class="middle">
+            {% if submitted %}
+            <div class="container py-2">
+                <div class="row">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong><i class="bi bi-exclamation-triangle text-danger"></i></strong>Thanks. Product has been Saved...!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <div class="row">
+                        <a href="/" class="btn btn-primary">Back Home</a>
+                    </div>
+                    <div class="row py-3">
+                        <a href="{% url 'add_product' %}" class="btn btn-primary">Add Another Product</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <form action="" method='post'>
+                {% csrf_token %}
+                <h1>Add Product</h1>
+                {{products.name|as_crispy_field}}
+                {{products.category|as_crispy_field}}
+                {{products.unitPrice|as_crispy_field}}
+                {{products.stocked|as_crispy_field}}
+                {{products.measuredin|as_crispy_field}}
+                {{products.status|as_crispy_field}}
+
+                
+                <br>
+                <input type="submit" class="button btn-secondary" value="Confirm">
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% include "partials/footer.html" %}
+{% endblock %}
